@@ -5,7 +5,7 @@ import java.util.*;
 public class DublicateUtil {
 
     public static <T> Collection<T> findElementsWithoutDublicates(Collection<T> input) {
-        Collection<T> result =  new HashSet<>();
+        HashSet<T> result =  new HashSet<>();
         ArrayList<T> temp = new ArrayList<>(input);
         HashMap<T, Integer> map = new HashMap<>();
         for (T element : temp) {
