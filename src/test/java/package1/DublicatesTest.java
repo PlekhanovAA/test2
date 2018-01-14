@@ -1,19 +1,20 @@
 package package1;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Collection;
 
-public class DublicatesTest {
+public class DublicatesTest extends Assert {
 
     @Test
     public void dublicateOnceIntTest() {
         Collection<Integer> inputIntOnce = Arrays.asList(1, 2, 1, 0, 1, 288, 2, 0, 1);
         Collection<Integer> resultIntOnce = DublicateUtil.findElementsWithoutDublicates(inputIntOnce);
 
-        assert resultIntOnce.size() == 1;
-        assert resultIntOnce.contains(288);
+        assertEquals(resultIntOnce.size(), 1);
+        assertTrue(resultIntOnce.contains(288));
     }
 
     @Test
@@ -21,8 +22,8 @@ public class DublicatesTest {
         Collection<String> inputStrOnce = Arrays.asList("a", "b", "a", "c", "d", "d", "b");
         Collection<String> resultStrOnce = DublicateUtil.findElementsWithoutDublicates(inputStrOnce);
 
-        assert resultStrOnce.size() == 1;
-        assert resultStrOnce.contains("c");
+        assertEquals(resultStrOnce.size(), 1);
+        assertTrue(resultStrOnce.contains("c"));
     }
 
     @Test
@@ -30,21 +31,21 @@ public class DublicatesTest {
         Collection<Integer> inputIntMore = Arrays.asList(555, 1, 2, 1, 0, 1, 288, 2, 0, 1, 99);
         Collection<Integer> resultIntMore = DublicateUtil.findElementsWithoutDublicates(inputIntMore);
 
-        assert resultIntMore.size() == 3;
-        assert resultIntMore.contains(288);
-        assert resultIntMore.contains(99);
-        assert resultIntMore.contains(555);
+        assertEquals(resultIntMore.size(), 3);
+        assertTrue(resultIntMore.contains(288));
+        assertTrue(resultIntMore.contains(99));
+        assertTrue(resultIntMore.contains(555));
     }
 
     @Test
     public void dublicateMoreStrTest() {
-        Collection<String> inputStrMore = Arrays.asList("hhh", "a", "b", "a","hello", "c", "d", "d", "b");
+        Collection<String> inputStrMore = Arrays.asList("hhh", "a", "b", "a", "hello", "c", "d", "d", "b");
         Collection<String> resultStrMore = DublicateUtil.findElementsWithoutDublicates(inputStrMore);
 
-        assert resultStrMore.size() == 3;
-        assert resultStrMore.contains("c");
-        assert resultStrMore.contains("hhh");
-        assert resultStrMore.contains("hello");
+        assertEquals(resultStrMore.size(), 3);
+        assertTrue(resultStrMore.contains("c"));
+        assertTrue(resultStrMore.contains("hhh"));
+        assertTrue(resultStrMore.contains("hello"));
     }
 
     @Test
@@ -52,7 +53,7 @@ public class DublicatesTest {
         Collection<Integer> inputIntNone = Arrays.asList(1, 2, 1, 0, 1, 2, 0, 1);
         Collection<Integer> resultIntNone = DublicateUtil.findElementsWithoutDublicates(inputIntNone);
 
-        assert resultIntNone.size() == 0;
+        assertEquals(resultIntNone.size(), 0);
     }
 
     @Test
@@ -60,6 +61,6 @@ public class DublicatesTest {
         Collection<String> inputStrNone = Arrays.asList("a", "b", "a", "d", "d", "b");
         Collection<String> resultStrNone = DublicateUtil.findElementsWithoutDublicates(inputStrNone);
 
-        assert resultStrNone.size() == 0;
+        assertEquals(resultStrNone.size(), 0);
     }
 }
