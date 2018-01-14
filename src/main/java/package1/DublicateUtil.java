@@ -6,12 +6,13 @@ public class DublicateUtil {
 
     public static <T> Collection<T> findElementsWithoutDublicates(Collection<T> input) {
         Collection<T> result =  new HashSet<>();
+        ArrayList<T> temp = new ArrayList<>(input);
         HashMap<T, Integer> map = new HashMap<>();
-        for (int i = 0; i < input.size(); i++) {
-            if (map.get(input.toArray()[i]) == null) {
-                map.put((T)input.toArray()[i], 1);
+        for (T element : temp) {
+            if (map.get(element) == null) {
+                map.put(element, 1);
             } else {
-                map.put((T)input.toArray()[i], 2);
+                map.put(element, 2);
             }
         }
         for (Map.Entry<T, Integer> entry : map.entrySet()) {
