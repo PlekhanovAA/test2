@@ -1,21 +1,17 @@
 package package1;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class DublicateUtil {
 
     public static <T> Collection<T> findElementsWithoutDublicates(Collection<T> input) {
         HashSet<T> result =  new HashSet<>();
-        HashMap<T, Integer> map = new HashMap<>();
-        input.forEach(element -> {
-            if (map.get(element) == null) {
-                map.put(element, 1);
-            } else {
-                map.put(element, 2);
-            }
-        });
+        Map<T, Long> map2 = input.stream().collect(Collectors.groupingBy(e -> e, Collectors.counting()));
 
-        for (Map.Entry<T, Integer> entry : map.entrySet()) {
+        for (Map.Entry<T, Long> entry : map2.entrySet()) {
             if (entry.getValue() == 1) {
                 result.add(entry.getKey());
             }
